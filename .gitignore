@@ -1,0 +1,16 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# MLflow artifacts
+experiments/mlruns/
+
+# OS / editor files
+.DS_Store
+.vscode/
+
+# Logs
+*.log
