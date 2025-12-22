@@ -14,3 +14,10 @@ experiments/mlruns/
 
 # Logs
 *.log
+
+# Trained models
+models/*.joblib
+models/*.pkl
+
+# MLflow artifacts
+experiments/MLruns/
