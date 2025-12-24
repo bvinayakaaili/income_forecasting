@@ -21,3 +21,12 @@ models/*.pkl
 
 # MLflow artifacts
 experiments/MLruns/
+
+# Reports & outputs
+monitoring/reports/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PDFs / docs
+*.pdf
