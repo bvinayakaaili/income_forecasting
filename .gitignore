@@ -1,32 +1,48 @@
-# Virtual environment
+# ===============================
+# Python & Virtual Environment
+# ===============================
 venv/
-
-# Python cache
 __pycache__/
 *.pyc
 
-# MLflow artifacts
-experiments/mlruns/
+# ===============================
+# MLflow (CRITICAL)
+# ===============================
+mlruns/
+mlartifacts/
+mlflow.db
 
-# OS / editor files
-.DS_Store
-.vscode/
+# ===============================
+# Data
+# ===============================
+data/processed/*
+!data/processed/.gitignore
 
-# Logs
-*.log
-
-# Trained models
+# ===============================
+# Trained models (local only)
+# ===============================
 models/*.joblib
 models/*.pkl
 
-# MLflow artifacts
-experiments/MLruns/
+# ===============================
+# OS / Editor
+# ===============================
+.DS_Store
+Thumbs.db
+.vscode/
 
-# Reports & outputs
-monitoring/reports/
+# ===============================
+# Logs
+# ===============================
+*.log
 
+# ===============================
 # Jupyter
+# ===============================
 .ipynb_checkpoints/
 
-# PDFs / docs
+# ===============================
+# Reports & Docs
+# ===============================
+monitoring/reports/
 *.pdf
