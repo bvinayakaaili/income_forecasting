@@ -12,7 +12,8 @@ st.set_page_config(
 )
 
 import pandas as pd
-import joblib
+import mlflow
+import mlflow.sklearn
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
@@ -66,11 +67,20 @@ FEATURES_PATH = PROJECT_ROOT / "models" / "random_forest_features_v1.pkl"
 # ===============================
 @st.cache_resource
 def load_model_and_features():
-    model = joblib.load(MODEL_PATH)
-    feature_names = joblib.load(FEATURES_PATH)
+    mlflow.set_tracking_uri("http://host.docker.internal:5000")
+
+    model = mlflow.sklearn.load_model(
+        "models:/IncomeInequalityModel/Production"
+    )
+
+    # Extract feature names from trained model
+    feature_names = model.feature_names_in_
+
     return model, feature_names
 
+
 model, FEATURE_NAMES = load_model_and_features()
+
 
 # ===============================
 # UI HEADER
