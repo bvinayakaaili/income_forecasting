@@ -71,7 +71,10 @@ def load_model_and_features():
     import mlflow.sklearn
 
     # Point to local MLflow runs directory
-    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
+    mlflow.set_tracking_uri(
+        os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns")
+    )
+
 
 
     model = mlflow.sklearn.load_model(
