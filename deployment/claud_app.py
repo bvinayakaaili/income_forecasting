@@ -67,16 +67,20 @@ FEATURES_PATH = PROJECT_ROOT / "models" / "random_forest_features_v1.pkl"
 # ===============================
 @st.cache_resource
 def load_model_and_features():
-    mlflow.set_tracking_uri("http://host.docker.internal:5000")
+    import mlflow
+    import mlflow.sklearn
+
+    # Point to local MLflow runs directory
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
     model = mlflow.sklearn.load_model(
         "models:/IncomeInequalityModel/Production"
     )
 
-    # Extract feature names from trained model
     feature_names = model.feature_names_in_
 
     return model, feature_names
+
 
 
 model, FEATURE_NAMES = load_model_and_features()
@@ -499,9 +503,7 @@ st.markdown(
     with strict feature schema alignment (MLOps best practice).</i></p>
     <p style='color: #7f8c8d; margin-top: 10px;'>Built with ❤️ using Streamlit, Plotly & Scikit-learn</p>
     </div>
-    """, unsafe_allow_html=True
-<<<<<<< HEAD
+    """,
+    unsafe_allow_html=True
 )
-=======
-)
->>>>>>> 45e934533720064af228631957909227b83b29f3
+
