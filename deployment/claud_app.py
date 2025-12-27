@@ -66,24 +66,26 @@ FEATURES_PATH = PROJECT_ROOT / "models" / "random_forest_features_v1.pkl"
 # LOAD MODEL & FEATURES
 # ===============================
 @st.cache_resource
+@st.cache_resource
 def load_model_and_features():
+    import os
     import mlflow
     import mlflow.sklearn
 
-    # Point to local MLflow runs directory
-    mlflow.set_tracking_uri(
-        os.getenv("MLFLOW_TRACKING_URI", "file:./mlruns")
-    )
+    tracking_uri = os.getenv("MLFLOW_TRACKING_URI")
 
-
-
-    model = mlflow.sklearn.load_model(
-        "models:/IncomeInequalityModel/Production"
-    )
+    if tracking_uri:
+        mlflow.set_tracking_uri(tracking_uri)
+        model = mlflow.sklearn.load_model(
+            "models:/IncomeInequalityModel/Production"
+        )
+    else:
+        st.warning("MLflow backend not configured. Running in demo mode.")
+        return None, None
 
     feature_names = model.feature_names_in_
-
     return model, feature_names
+
 
 
 
@@ -173,6 +175,9 @@ for feature, value in user_input.items():
 # ===============================
 # PREDICTION
 # ===============================
+if model is None:
+    st.stop()
+
 prediction = model.predict(model_input)[0]
 
 # ===============================
