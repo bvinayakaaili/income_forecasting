@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
+import os
 import pandas as pd
 import mlflow
 import mlflow.sklearn
