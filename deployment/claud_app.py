@@ -500,4 +500,8 @@ st.markdown(
     <p style='color: #7f8c8d; margin-top: 10px;'>Built with ❤️ using Streamlit, Plotly & Scikit-learn</p>
     </div>
     """, unsafe_allow_html=True
+<<<<<<< HEAD
 )
+=======
+)
+>>>>>>> 45e934533720064af228631957909227b83b29f3

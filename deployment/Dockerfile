@@ -23,10 +23,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # -----------------------------
-# Copy application code ONLY
-# -----------------------------
-COPY deployment/ deployment/
-COPY src/ src/
+
 
 # -----------------------------
 # Expose Streamlit port
@@ -34,6 +31,10 @@ COPY src/ src/
 EXPOSE 8501
 
 # -----------------------------
+<<<<<<< HEAD
 # Run Streamlit app
+=======
+# Run Streamlit (FINAL APP)
+>>>>>>> 45e934533720064af228631957909227b83b29f3
 # -----------------------------
 CMD ["streamlit", "run", "deployment/claud_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
